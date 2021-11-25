@@ -49,25 +49,30 @@ class BoardView: UIView {
     
     func drawChip(at slot: Slot) {
         
-        let columnSize = bounds.size.width / numColumns
-        let xPosition = CGFloat(slot.column) * columnSize
-        
-        let rowSize = bounds.size.height / numRows
-        let yPosition = bounds.size.height - (CGFloat(slot.row) * rowSize)
-        
-        let size = min(rowSize, columnSize)
+        let chipDimensions = dimensionsForChip(at: slot)
         
         let newChip = UIView()
-        newChip.frame = CGRect(x: 0, y: 0, width: size, height: size)
+        newChip.frame = CGRect(x: 0, y: 0, width: chipDimensions.size, height: chipDimensions.size)
         newChip.isUserInteractionEnabled = false
         newChip.backgroundColor = .red
-        newChip.layer.cornerRadius = size / 2
-        newChip.center = CGPoint(x: xPosition, y: yPosition)
+        newChip.layer.cornerRadius = chipDimensions.size / 2
+        newChip.center = chipDimensions.position
         addSubview(newChip)
     }
     
     //MARK: Utils
-    func createButton(tag: Int) -> UIButton {
+    private func dimensionsForChip(at slot: Slot) -> (position: CGPoint, size: CGFloat) {
+        
+        let currentColumnView = columnsStackView.arrangedSubviews[slot.column]
+        let chipSize = min(currentColumnView.frame.width, currentColumnView.frame.height / numRows)
+        
+        let xPosition = currentColumnView.frame.midX
+        let yPosition = (currentColumnView.frame.maxY - chipSize/2) - (chipSize * CGFloat(slot.row))
+        
+        return (position: CGPoint(x: xPosition, y: yPosition), size: chipSize)
+    }
+    
+    private func createButton(tag: Int) -> UIButton {
         
         let button = UIButton()
         button.tag = tag
