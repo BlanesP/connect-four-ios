@@ -36,32 +36,32 @@ class BoardView: UIView {
     }
     
     //MARK: Public
-    func setComponent(gridSize: GridSize, tapAction: @escaping TapAction) {
+    func setComponent(boardSize: BoardSize, tapAction: @escaping TapAction) {
         
         self.tapAction = tapAction
-        self.numRows = CGFloat(gridSize.numRows)
-        self.numColumns = CGFloat(gridSize.numColumns)
+        self.numRows = CGFloat(boardSize.numRows)
+        self.numColumns = CGFloat(boardSize.numColumns)
         
-        for i in 0..<gridSize.numColumns {
+        for i in 0..<boardSize.numColumns {
             columnsStackView.addArrangedSubview(createButton(tag: i))
         }
     }
     
-    func drawChip(at slot: Slot) {
+    func draw(chip: ChipViewModel, at slot: BoardPosition) {
         
         let chipDimensions = dimensionsForChip(at: slot)
         
         let newChip = UIView()
         newChip.frame = CGRect(x: 0, y: 0, width: chipDimensions.size, height: chipDimensions.size)
         newChip.isUserInteractionEnabled = false
-        newChip.backgroundColor = .red
+        newChip.backgroundColor = chip.color
         newChip.layer.cornerRadius = chipDimensions.size / 2
         newChip.center = chipDimensions.position
         addSubview(newChip)
     }
     
     //MARK: Utils
-    private func dimensionsForChip(at slot: Slot) -> (position: CGPoint, size: CGFloat) {
+    private func dimensionsForChip(at slot: BoardPosition) -> (position: CGPoint, size: CGFloat) {
         
         let currentColumnView = columnsStackView.arrangedSubviews[slot.column]
         let chipSize = min(currentColumnView.frame.width, currentColumnView.frame.height / numRows)
