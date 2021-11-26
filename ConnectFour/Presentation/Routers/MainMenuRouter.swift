@@ -27,7 +27,8 @@ extension DefaultMainMenuRouter: MainMenuRouter {
     func goToGame() {
         
         let vc = GameFactory.createGameModule(with: dataSource.gameConfiguration)
-        vc.modalPresentationStyle = .fullScreen
-        viewController?.present(vc, animated: true, completion: nil)
+        let nc = UINavigationController(rootViewController: vc)
+        nc.modalPresentationStyle = .fullScreen
+        viewController?.present(nc, animated: true, completion: nil)
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 protocol GameViewControllerInput: AnyObject {
     func setUpBoardView(boardSize: BoardSize)
     func draw(chip: ChipViewModel, at slot: BoardPosition)
+    func setTitle(with titleText: String)
 }
 
 class GameViewController: UIViewController, AlertDisplayer {
@@ -36,6 +37,10 @@ extension GameViewController: GameViewControllerInput {
     
     func draw(chip: ChipViewModel, at slot: BoardPosition) {
         boardView.draw(chip: chip, at: slot)
+    }
+    
+    func setTitle(with titleText: String) {
+        self.title = titleText
     }
 }
 

@@ -12,3 +12,4 @@
 "GameOver" = "Fin del juego";
 "ItsDraw" = "Empate!!";
 "PlayerWins" = "%@ ha ganado!!";
+"PlayerTurn" = "Turno de %@!";

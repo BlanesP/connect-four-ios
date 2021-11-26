@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 
 protocol GamePresenter {
-    func startGame(with boardSize: BoardSize)
+    func startGame(with boardSize: BoardSize, startingPlayer: Player)
     func player(_ player: Player, placedChipAt slot: BoardPosition)
+    func turnChanged(newPlayer: Player)
     func columnIsFull()
     func gameEndedInDraw()
     func gameWon(by player: Player)
@@ -23,13 +24,18 @@ final class DefaultGamePresenter {
 
 extension DefaultGamePresenter: GamePresenter {
     
-    func startGame(with boardSize: BoardSize) {
+    func startGame(with boardSize: BoardSize, startingPlayer: Player) {
         //Here you could add animations, labels, anything that the view needs to visually display at the start of the game
         viewController?.setUpBoardView(boardSize: boardSize)
+        viewController?.setTitle(with: String(format: String(localized: "PlayerTurn"), startingPlayer.name))
     }
     
     func player(_ player: Player, placedChipAt slot: BoardPosition) {
         viewController?.draw(chip: ChipViewModel(color: UIColor(hexString: player.colorHex, alpha: 1)), at: slot)
+    }
+    
+    func turnChanged(newPlayer: Player) {
+        viewController?.setTitle(with: String(format: String(localized: "PlayerTurn"), newPlayer.name))
     }
     
     func columnIsFull() {

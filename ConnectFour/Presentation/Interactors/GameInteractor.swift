@@ -139,7 +139,7 @@ extension DefaultGameInteractor: GameInteractor {
     func startGame() {
         selectStartingPlayer()
         resetBoard()
-        presenter.startGame(with: boardSize)
+        presenter.startGame(with: boardSize, startingPlayer: gameState.currentPlayer)
     }
     
     func tap(at column: Int) {
@@ -157,6 +157,7 @@ extension DefaultGameInteractor: GameInteractor {
                 presenter.gameWon(by: currentPlayer)
             } else {
                 selectNextPlayer()
+                presenter.turnChanged(newPlayer: gameState.currentPlayer)
             }
             
         } else {
