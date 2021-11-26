@@ -9,7 +9,7 @@ import Foundation
 
 protocol MainMenuPresenter {
     func succededToDownloadGameConfig()
-    func failedToDownloadGameConfig(wirh error: CustomError)
+    func failedToDownloadGameConfig(with error: CustomError)
 }
 
 final class DefaultMainMenuPresenter {
@@ -23,7 +23,7 @@ extension DefaultMainMenuPresenter: MainMenuPresenter {
         viewController?.goToGame()
     }
     
-    func failedToDownloadGameConfig(wirh error: CustomError) {
+    func failedToDownloadGameConfig(with error: CustomError) {
         var title = ""
         if let errorCode = error.statusCode { title = "\(errorCode)" }
         viewController?.showAlert(title: title, message: error.description, btnText: String(localized: "OK"), btnAction: nil)

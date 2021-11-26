@@ -41,7 +41,7 @@ extension DefaultMainMenuInteractor: MainMenuInteractor {
         } failure: { [weak self] error in
             
             guard let self = self else { return }
-            self.presenter.failedToDownloadGameConfig(wirh: error)
+            self.presenter.failedToDownloadGameConfig(with: error)
         }
     }
 }
