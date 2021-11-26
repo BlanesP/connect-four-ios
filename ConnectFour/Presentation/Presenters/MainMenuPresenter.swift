@@ -26,6 +26,6 @@ extension DefaultMainMenuPresenter: MainMenuPresenter {
     func failedToDownloadGameConfig(wirh error: CustomError) {
         var title = ""
         if let errorCode = error.statusCode { title = "\(errorCode)" }
-        viewController?.showAlert(title: title, message: error.description, btnText: "OK", btnAction: nil)
+        viewController?.showAlert(title: title, message: error.description, btnText: String(localized: "OK"), btnAction: nil)
     }
 }

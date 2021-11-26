@@ -10,6 +10,7 @@
 		0DDA4BE846BACAAB371C9792 /* Pods_ConnectFour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EFFAE83D0C471FDF314D5E /* Pods_ConnectFour.framework */; };
 		1E199CF72751573C0099DF68 /* DefaultApiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E199CF52751573C0099DF68 /* DefaultApiRepository.swift */; };
 		1E199CF82751573C0099DF68 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E199CF62751573C0099DF68 /* CustomError.swift */; };
+		1E270A9C2751756E00B405E7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1E270A9E2751756E00B405E7 /* Localizable.strings */; };
 		1E2D80FE27501114002755C3 /* ChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2D80FD27501114002755C3 /* ChipViewModel.swift */; };
 		1E2D8100275011D3002755C3 /* GamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2D80FF275011D3002755C3 /* GamePresenter.swift */; };
 		1E2D81032750173E002755C3 /* BoardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2D81022750173E002755C3 /* BoardModels.swift */; };
@@ -42,6 +43,10 @@
 /* Begin PBXFileReference section */
 		1E199CF52751573C0099DF68 /* DefaultApiRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultApiRepository.swift; sourceTree = "<group>"; };
 		1E199CF62751573C0099DF68 /* CustomError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		1E270A982751752500B405E7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		1E270A992751752500B405E7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1E270A9D2751756E00B405E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1E270A9F2751756F00B405E7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1E2D80FD27501114002755C3 /* ChipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipViewModel.swift; sourceTree = "<group>"; };
 		1E2D80FF275011D3002755C3 /* GamePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePresenter.swift; sourceTree = "<group>"; };
 		1E2D81022750173E002755C3 /* BoardModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardModels.swift; sourceTree = "<group>"; };
@@ -259,6 +264,7 @@
 				1ECD5869274D362500E31006 /* Assets.xcassets */,
 				1ECD586B274D362500E31006 /* LaunchScreen.storyboard */,
 				1ECD586E274D362500E31006 /* Info.plist */,
+				1E270A9E2751756E00B405E7 /* Localizable.strings */,
 			);
 			path = ConnectFour;
 			sourceTree = "<group>";
@@ -324,6 +330,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 1ECD5854274D362300E31006;
 			productRefGroup = 1ECD585E274D362300E31006 /* Products */;
@@ -340,6 +347,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E270A9C2751756E00B405E7 /* Localizable.strings in Resources */,
 				1ECD586D274D362500E31006 /* LaunchScreen.storyboard in Resources */,
 				1E9C0C34274D4E4E00DE5366 /* BoardView.xib in Resources */,
 				1ECD586A274D362500E31006 /* Assets.xcassets in Resources */,
@@ -427,10 +435,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1E270A9E2751756E00B405E7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1E270A9D2751756E00B405E7 /* en */,
+				1E270A9F2751756F00B405E7 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		1ECD5866274D362300E31006 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1ECD5867274D362300E31006 /* Base */,
+				1E270A982751752500B405E7 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -439,6 +457,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1ECD586C274D362500E31006 /* Base */,
+				1E270A992751752500B405E7 /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -450,6 +469,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -503,6 +523,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -511,6 +532,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -557,6 +579,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};

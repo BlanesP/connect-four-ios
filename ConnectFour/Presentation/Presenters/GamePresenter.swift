@@ -33,14 +33,14 @@ extension DefaultGamePresenter: GamePresenter {
     }
     
     func columnIsFull() {
-        viewController?.showAlert(title: "Atention!", message: "This column is full", btnText: "OK", btnAction: nil)
+        viewController?.showAlert(title: String(localized: "Attention"), message: String(localized: "ColumnFull"), btnText: String(localized: "OK"), btnAction: nil)
     }
     
     func gameEndedInDraw() {
-        viewController?.showAlert(title: "Game Over", message: "It's a draw!!", btnText: "OK", btnAction: nil)
+        viewController?.showAlert(title: String(localized: "GameOver"), message: String(localized: "ItsDraw"), btnText: String(localized: "OK"), btnAction: nil)
     }
     
     func gameWon(by player: Player) {
-        viewController?.showAlert(title: "Game Over", message: "\(player.name) wins!!", btnText: "OK", btnAction: nil)
+        viewController?.showAlert(title: String(localized: "GameOver"), message: String(format: String(localized: "PlayerWins"), player.name) , btnText: String(localized: "OK"), btnAction: nil)
     }
 }

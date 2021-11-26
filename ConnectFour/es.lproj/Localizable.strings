@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  ConnectFour
+
+  Created by Pau Blanes on 26/11/21.
+  
+*/
+
+"Attention" = "Atención!";
+"ColumnFull" = "Esta columna está llena";
+"OK" = "Aceptar";
+"GameOver" = "Fin del juego";
+"ItsDraw" = "Empate!!";
+"PlayerWins" = "%@ ha ganado!!";
