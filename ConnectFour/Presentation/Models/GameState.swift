@@ -9,14 +9,16 @@ import Foundation
 
 struct GameState {
     
+    let id: UInt64
     let boardSize: BoardSize
     let player1: Player
     let player2: Player
     var board: Grid<ChipOwner>
     var currentPlayer: Player
     
-    init(boardSize: BoardSize, player1: Player, player2: Player) {
+    init(id: UInt64, boardSize: BoardSize, player1: Player, player2: Player) {
         
+        self.id = id
         self.boardSize = boardSize
         self.player1 = player1
         self.player2 = player2
@@ -26,9 +28,9 @@ struct GameState {
         self.currentPlayer = player1
     }
     
-    init(boardString: String, boardSize: BoardSize, player1: Player, player2: Player) {
+    init(id: UInt64, boardString: String, boardSize: BoardSize, player1: Player, player2: Player) {
         
-        self.init(boardSize: boardSize, player1: player1, player2: player2)
+        self.init(id: id, boardSize: boardSize, player1: player1, player2: player2)
         
         var boardFromString = Grid<ChipOwner>()
         let boardRows = boardString.split(separator: "\n").filter({!$0.isEmpty})

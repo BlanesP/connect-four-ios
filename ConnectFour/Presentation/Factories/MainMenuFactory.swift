@@ -12,8 +12,9 @@ final class MainMenuFactory {
     static func createMainMenuModule() -> MainMenuViewController {
         
         let presenter = DefaultMainMenuPresenter()
-        let interactor = DefaultMainMenuInteractor(presenter: presenter)
-        let router = DefaultMainMenuRouter()
+        let worker = DefaultGameConfigurationWorker(apiRepository: DefaultApiRepository())
+        let interactor = DefaultMainMenuInteractor(presenter: presenter, worker: worker)
+        let router = DefaultMainMenuRouter(dataSource: interactor)
         
         let viewController = MainMenuViewController.getStoryboardInstance()
         

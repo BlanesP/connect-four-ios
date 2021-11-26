@@ -15,13 +15,18 @@ protocol MainMenuRouter {
 final class DefaultMainMenuRouter {
     
     weak var viewController: UIViewController?
+    var dataSource: GameDataSource
+    
+    init(dataSource: GameDataSource) {
+        self.dataSource = dataSource
+    }
 }
 
 extension DefaultMainMenuRouter: MainMenuRouter {
     
     func goToGame() {
         
-        let vc = GameFactory.createGameModule()
+        let vc = GameFactory.createGameModule(with: dataSource.gameConfiguration)
         vc.modalPresentationStyle = .fullScreen
         viewController?.present(vc, animated: true, completion: nil)
     }

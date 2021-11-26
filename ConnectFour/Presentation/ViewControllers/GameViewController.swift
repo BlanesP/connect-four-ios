@@ -7,15 +7,12 @@
 
 import UIKit
 
-typealias ButtonAction = () -> Void
-
 protocol GameViewControllerInput: AnyObject {
     func setUpBoardView(boardSize: BoardSize)
     func draw(chip: ChipViewModel, at slot: BoardPosition)
-    func showAlert(title: String, message: String, btnText: String, btnAction: ButtonAction?)
 }
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, AlertDisplayer {
     
     @IBOutlet weak var boardView: BoardView!
     
@@ -39,16 +36,6 @@ extension GameViewController: GameViewControllerInput {
     
     func draw(chip: ChipViewModel, at slot: BoardPosition) {
         boardView.draw(chip: chip, at: slot)
-    }
-    
-    func showAlert(title: String, message: String, btnText: String, btnAction: ButtonAction?) {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: btnText, style: .default, handler: { _ in
-            btnAction?()
-        }))
-        
-        self.present(alert, animated: true)
     }
 }
 

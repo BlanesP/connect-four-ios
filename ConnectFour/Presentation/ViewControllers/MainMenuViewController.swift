@@ -11,7 +11,7 @@ protocol MainMenuViewControllerInput: AnyObject {
     func goToGame()
 }
 
-class MainMenuViewController: UIViewController {
+class MainMenuViewController: UIViewController, AlertDisplayer {
 
     @IBOutlet weak var playButton: UIButton!
     

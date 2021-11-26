@@ -10,11 +10,13 @@ import UIKit
 
 final class GameFactory {
     
-    static func createGameModule() -> GameViewController {
+    static func createGameModule(with configuration: GameConfigurationEntity) -> GameViewController {
     
-        let gameState = GameState(boardSize: BoardSize(numRows: 6, numColumns: 7),
-                                  player1: Player(id: "a", name: "1", chip: .player1, colorHex: "#FF0000"),
-                                  player2: Player(id: "b", name: "2", chip: .player2, colorHex: "#0000FF"))
+        let player1 = Player(id: UUID().uuidString, name: configuration.name1, chip: .player1, colorHex: configuration.color1)
+        let player2 = Player(id: UUID().uuidString, name: configuration.name2, chip: .player2, colorHex: configuration.color2)
+        let gameState = GameState(id: configuration.id,
+                                  boardSize: BoardSize(numRows: 6, numColumns: 7),
+                                  player1: player1, player2: player2)
         
         let presenter = DefaultGamePresenter()
         let interactor = DefaultGameInteractor(gameState: gameState, presenter: presenter)

@@ -18,7 +18,7 @@ protocol GamePresenter {
 
 final class DefaultGamePresenter {
     
-    weak var viewController: GameViewControllerInput?
+    weak var viewController: (GameViewControllerInput & AlertDisplayer)?
 }
 
 extension DefaultGamePresenter: GamePresenter {
