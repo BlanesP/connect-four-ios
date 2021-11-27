@@ -1,5 +1,5 @@
 //
-//  Board+Extensions.swift
+//  MockGameState.swift
 //  ConnectFourTests
 //
 //  Created by Pau Blanes on 27/11/21.
@@ -8,11 +8,17 @@
 import Foundation
 @testable import ConnectFour
 
-extension GameState {
+class MockGameState: GameState {
     
-    init(id: UInt64, boardString: String, boardSize: BoardSize, player1: Player, player2: Player) {
-        
-        self.init(id: id, boardSize: boardSize, player1: player1, player2: player2)
+    let id: UInt64
+    let boardSize: BoardSize
+    let player1: Player
+    let player2: Player
+    
+    var board: Grid<PlayerId>
+    var currentPlayer: Player
+    
+    init(boardString: String, boardSize: BoardSize, player1: Player, player2: Player) {
         
         var boardFromString = Grid<PlayerId>()
         let boardRows = boardString.split(separator: "\n").filter({!$0.isEmpty})
@@ -36,5 +42,10 @@ extension GameState {
         }
         
         self.board = boardFromString
+        self.id = 0
+        self.boardSize = boardSize
+        self.player1 = player1
+        self.player2 = player2
+        self.currentPlayer = player1
     }
 }

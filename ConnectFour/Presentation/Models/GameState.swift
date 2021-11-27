@@ -7,7 +7,17 @@
 
 import Foundation
 
-struct GameState {
+protocol GameState {
+    var id: UInt64 { get }
+    var boardSize: BoardSize { get }
+    var player1: Player { get }
+    var player2: Player { get }
+    
+    var board: Grid<PlayerId> { get set }
+    var currentPlayer: Player { get set }
+}
+
+struct DefaultGameState: GameState {
     
     let id: UInt64
     let boardSize: BoardSize

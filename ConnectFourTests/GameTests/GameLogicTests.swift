@@ -154,7 +154,64 @@ class GameLogicTests: XCTestCase {
                             """
     }
     
-    //MARK: - Tests
+    //MARK: - Data Flow Tests
+    func testGameStarted() {
+        
+        let (interactor, presenterSpy) = createGameInteractor(with: emptyBoard)
+        
+        interactor.startGame()
+        
+        XCTAssertTrue(presenterSpy.startGameCalled)
+    }
+    
+    func testTapValidColumn() {
+        
+        let (interactor, presenterSpy) = createGameInteractor(with: emptyBoard, currentPlayer: .player1)
+        
+        interactor.tap(at: 0)
+        
+        XCTAssertEqual(presenterSpy.playerMoving?.id, .player1)
+        XCTAssertTrue(presenterSpy.movePosition?.row == 0 && presenterSpy.movePosition?.column == 0)
+        XCTAssertEqual(presenterSpy.nextPlayer?.id, .player2)
+    }
+    
+    func testTapFullColumn() {
+        
+        let (interactor, presenterSpy) = createGameInteractor(with: almostFullBoard, currentPlayer: .player1)
+        
+        interactor.tap(at: 0)
+        
+        XCTAssertNil(presenterSpy.playerMoving)
+        XCTAssertNil(presenterSpy.movePosition)
+        XCTAssertNil(presenterSpy.nextPlayer)
+        XCTAssertTrue(presenterSpy.columnFullCalled)
+    }
+    
+    func testFillBoard() {
+        
+        let (interactor, presenterSpy) = createGameInteractor(with: almostFullBoard, currentPlayer: .player1)
+        
+        interactor.tap(at: 6)
+        
+        XCTAssertEqual(presenterSpy.playerMoving?.id, .player1)
+        XCTAssertTrue(presenterSpy.movePosition?.row == 5 && presenterSpy.movePosition?.column == 6)
+        XCTAssertNil(presenterSpy.nextPlayer)
+        XCTAssertTrue(presenterSpy.gameDrawCalled)
+    }
+    
+    func testTapWinningMove() {
+        
+        let (interactor, presenterSpy) = createGameInteractor(with: board4, currentPlayer: .player2)
+        
+        interactor.tap(at: 2)
+        
+        XCTAssertEqual(presenterSpy.playerMoving?.id, .player2)
+        XCTAssertTrue(presenterSpy.movePosition?.row == 5 && presenterSpy.movePosition?.column == 2)
+        XCTAssertNil(presenterSpy.nextPlayer)
+        XCTAssertEqual(presenterSpy.winner?.id, .player2)
+    }
+    
+    //MARK: - Game Logic Tests
     func testChangingPlayer() {
         
         let gameLogic = createGameLogic(with: emptyBoard)
@@ -274,7 +331,27 @@ class GameLogicTests: XCTestCase {
                          player2: Player = Player(name: "", id: .player2, colorHex: "")) -> GameLogic {
         
         let presenter = DefaultGamePresenter()
-        let gameState = GameState(id: 0, boardString: boardString, boardSize: BoardSize(numRows: 6, numColumns: 7), player1: player1, player2: player2)
+        let gameState = createGameState(with: boardString, player1: player1, player2: player2)
         return DefaultGameInteractor(gameState: gameState, presenter: presenter)
+    }
+    
+    func createGameState(with boardString: String,
+                         player1: Player = Player(name: "", id: .player1, colorHex: ""),
+                         player2: Player = Player(name: "", id: .player2, colorHex: "")) -> GameState {
+        
+        return MockGameState(boardString: boardString, boardSize: BoardSize(numRows: 6, numColumns: 7), player1: player1, player2: player2)
+    }
+    
+    func createGameInteractor(with boardString: String,
+                              player1: Player = Player(name: "", id: .player1, colorHex: ""),
+                              player2: Player = Player(name: "", id: .player2, colorHex: ""),
+                              currentPlayer: PlayerId = .player1) -> (GameInteractor, GamePresenterSpy) {
+        
+        let presenterSpy = GamePresenterSpy()
+        var gameState = createGameState(with: boardString, player1: player1, player2: player2)
+        gameState.currentPlayer = (currentPlayer == .player1) ? gameState.player1 : gameState.player2
+        let interactor = DefaultGameInteractor(gameState: gameState, presenter: presenterSpy)
+        
+        return (interactor, presenterSpy)
     }
 }
