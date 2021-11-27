@@ -36,7 +36,7 @@ struct Grid<T> {
         return items[slot.column][slot.row]
     }
     
-    func getColumn(at columnIndex: Int) -> [T]? {
+    func getColumn(atIndex columnIndex: Int) -> [T]? {
         guard columnIndex < items.count else { return nil }
         return items[columnIndex]
     }
