@@ -1,5 +1,5 @@
 //
-//  PlayerModel.swift
+//  Player.swift
 //  ConnectFour
 //
 //  Created by Pau Blanes on 25/11/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ChipOwner: String {
+enum PlayerId: String {
     case none
     case player1
     case player2
@@ -15,9 +15,8 @@ enum ChipOwner: String {
 
 struct Player {
     
-    let id: String
     let name: String
-    let chip: ChipOwner
+    let id: PlayerId
     let colorHex: String
 }
 

@@ -42,7 +42,7 @@ final class DefaultGameInteractor {
     }
     
     //MARK: Utils
-    private func matchesFor(_ chip: ChipOwner, startingBoardPosition: BoardPosition, direction: (x: Direction, y: Direction)) -> Int {
+    private func matchesFor(_ chip: PlayerId, startingBoardPosition: BoardPosition, direction: (x: Direction, y: Direction)) -> Int {
         
         var matches = 0
         
@@ -85,24 +85,24 @@ extension DefaultGameInteractor: GameLogic {
         let player = gameState.currentPlayer
         
         //Horizontal win
-        if matchesFor(player.chip,startingBoardPosition: slot,direction: (x: .positive, y: .none)) +
-            matchesFor(player.chip, startingBoardPosition: slot, direction: (x: .negative, y: .none)) == matchesToWin {
+        if matchesFor(player.id,startingBoardPosition: slot,direction: (x: .positive, y: .none)) +
+            matchesFor(player.id, startingBoardPosition: slot, direction: (x: .negative, y: .none)) == matchesToWin {
             return true
         }
         
         //Vertical win
-        if matchesFor(player.chip,startingBoardPosition: slot,direction: (x: .none, y: .positive)) +
-            matchesFor(player.chip, startingBoardPosition: slot, direction: (x: .none, y: .negative)) == matchesToWin {
+        if matchesFor(player.id,startingBoardPosition: slot,direction: (x: .none, y: .positive)) +
+            matchesFor(player.id, startingBoardPosition: slot, direction: (x: .none, y: .negative)) == matchesToWin {
             return true
         }
         
         //Diagonal Win
-        if matchesFor(player.chip,startingBoardPosition: slot,direction: (x: .positive, y: .positive)) +
-            matchesFor(player.chip, startingBoardPosition: slot, direction: (x: .positive, y: .negative)) == matchesToWin {
+        if matchesFor(player.id,startingBoardPosition: slot,direction: (x: .positive, y: .positive)) +
+            matchesFor(player.id, startingBoardPosition: slot, direction: (x: .positive, y: .negative)) == matchesToWin {
             return true
         }
-        if matchesFor(player.chip,startingBoardPosition: slot,direction: (x: .negative, y: .positive)) +
-            matchesFor(player.chip, startingBoardPosition: slot, direction: (x: .negative, y: .negative)) == matchesToWin {
+        if matchesFor(player.id,startingBoardPosition: slot,direction: (x: .negative, y: .positive)) +
+            matchesFor(player.id, startingBoardPosition: slot, direction: (x: .negative, y: .negative)) == matchesToWin {
             return true
         }
         
@@ -148,7 +148,7 @@ extension DefaultGameInteractor: GameInteractor {
             
             let targetBoardPosition = BoardPosition(row: availableRow, column: column)
             let currentPlayer = gameState.currentPlayer
-            gameState.board.setValue(currentPlayer.chip, for: targetBoardPosition)
+            gameState.board.setValue(currentPlayer.id, for: targetBoardPosition)
             presenter.player(currentPlayer, placedChipAt: targetBoardPosition)
             
             if isBoardFull() {

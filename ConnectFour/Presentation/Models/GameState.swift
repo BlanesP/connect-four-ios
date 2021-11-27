@@ -13,7 +13,8 @@ struct GameState {
     let boardSize: BoardSize
     let player1: Player
     let player2: Player
-    var board: Grid<ChipOwner>
+    
+    var board: Grid<PlayerId>
     var currentPlayer: Player
     
     init(id: UInt64, boardSize: BoardSize, player1: Player, player2: Player) {
@@ -32,11 +33,11 @@ struct GameState {
         
         self.init(id: id, boardSize: boardSize, player1: player1, player2: player2)
         
-        var boardFromString = Grid<ChipOwner>()
+        var boardFromString = Grid<PlayerId>()
         let boardRows = boardString.split(separator: "\n").filter({!$0.isEmpty})
         for (rowIndex, rowString) in boardRows.enumerated() {
             
-            let rowItems: [ChipOwner] = rowString.split(separator: "|").map({
+            let rowItems: [PlayerId] = rowString.split(separator: "|").map({
                 if $0 == "1" {return .player1}
                 if $0 == "2" {return .player2}
                 return .none

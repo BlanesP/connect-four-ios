@@ -1,5 +1,5 @@
 //
-//  BoardModels.swift
+//  Board.swift
 //  ConnectFour
 //
 //  Created by Pau Blanes on 25/11/21.
