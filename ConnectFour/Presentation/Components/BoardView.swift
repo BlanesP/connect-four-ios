@@ -57,7 +57,12 @@ class BoardView: UIView {
         newChip.backgroundColor = chip.color
         newChip.layer.cornerRadius = chipDimensions.size / 2
         newChip.center = chipDimensions.position
+        newChip.transform = CGAffineTransform(translationX: 0, y: -self.frame.maxY)
         addSubview(newChip)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
+            newChip.transform = CGAffineTransform.identity
+        })
     }
     
     //MARK: Utils
