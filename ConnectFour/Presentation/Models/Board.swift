@@ -2,7 +2,7 @@
 //  Board.swift
 //  ConnectFour
 //
-//  Created by Pau Blanes on 25/11/21.
+//  Created by BlanesP on 25/11/21.
 //
 
 import Foundation

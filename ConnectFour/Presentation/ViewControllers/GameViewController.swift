@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  ConnectFour
 //
-//  Created by Pau Blanes on 23/11/21.
+//  Created by BlanesP on 23/11/21.
 //
 
 import UIKit

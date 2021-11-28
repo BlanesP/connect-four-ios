@@ -2,7 +2,7 @@
 //  GameViewControllerInputSpy.swift
 //  ConnectFourTests
 //
-//  Created by Pau Blanes on 27/11/21.
+//  Created by BlanesP on 27/11/21.
 //
 
 import Foundation

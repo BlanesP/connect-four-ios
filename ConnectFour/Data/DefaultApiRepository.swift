@@ -2,7 +2,7 @@
 //  DefaultApiRepository.swift
 //  ConnectFour
 //
-//  Created by Pau Blanes on 30/10/2021.
+//  Created by BlanesP on 30/10/2021.
 //
 
 import Foundation

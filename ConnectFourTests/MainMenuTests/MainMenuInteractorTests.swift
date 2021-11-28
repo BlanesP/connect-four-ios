@@ -2,7 +2,7 @@
 //  MainMenuInteractorTests.swift
 //  ConnectFourTests
 //
-//  Created by Pau Blanes on 28/11/21.
+//  Created by BlanesP on 28/11/21.
 //
 
 import XCTest
