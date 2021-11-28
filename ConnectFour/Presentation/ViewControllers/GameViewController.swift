@@ -15,6 +15,10 @@ protocol GameViewControllerInput: AnyObject {
 
 class GameViewController: UIViewController, AlertDisplayer {
     
+    private struct Constants {
+        public static let backgroundImage = UIImage(named: "background_image")
+    }
+    
     @IBOutlet weak var boardView: BoardView!
     
     var interactor: GameInteractor?
@@ -22,6 +26,7 @@ class GameViewController: UIViewController, AlertDisplayer {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let bgImg = Constants.backgroundImage { view.backgroundColor = UIColor(patternImage: bgImg) }
         interactor?.startGame()
     }
 }

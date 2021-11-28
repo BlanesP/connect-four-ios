@@ -14,7 +14,6 @@ protocol MainMenuViewControllerInput: AnyObject {
 class MainMenuViewController: UIViewController, AlertDisplayer, SpinnerViewDisplayer {
 
     private struct Constants {
-        
         public static let backgroundImage = UIImage(named: "background_image")
         public static let titleText = String(localized: "ConnectFourTitle")
         public static let buttonImage = UIImage(named: "play_btn")

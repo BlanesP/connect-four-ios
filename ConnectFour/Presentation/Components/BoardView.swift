@@ -76,7 +76,8 @@ class BoardView: UIView {
         
         let button = UIButton()
         button.tag = tag
-        button.backgroundColor = .white
+        button.backgroundColor = .black
+        button.alpha = 0.5
         button.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
         
         return button

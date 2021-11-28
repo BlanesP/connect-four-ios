@@ -20,7 +20,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="1080" height="790"/>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="qHZ-gI-C6H" secondAttribute="bottom" id="LNo-Jc-QLK"/>
                 <constraint firstItem="qHZ-gI-C6H" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jAy-Dg-f2Z"/>
