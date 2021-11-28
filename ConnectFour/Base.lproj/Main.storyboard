@@ -46,10 +46,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="1080" height="810"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRw-g5-2J1">
-                                <rect key="frame" x="506.5" y="399.5" width="67" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auN-uj-1DX">
+                                <rect key="frame" x="20" y="120" width="1040" height="60"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRw-g5-2J1">
+                                <rect key="frame" x="440" y="315" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="4KX-D3-pBm"/>
+                                    <constraint firstAttribute="height" constant="200" id="cDy-mv-QJr"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="play_btn"/>
                                 <connections>
                                     <action selector="playButtonPressed:" destination="aB2-ip-LJL" eventType="touchUpInside" id="OG6-GQ-1d9"/>
                                 </connections>
@@ -58,12 +68,16 @@
                         <viewLayoutGuide key="safeArea" id="eaN-Xz-KMe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rRw-g5-2J1" firstAttribute="centerX" secondItem="eaN-Xz-KMe" secondAttribute="centerX" id="nPl-xy-IKX"/>
-                            <constraint firstItem="rRw-g5-2J1" firstAttribute="centerY" secondItem="eaN-Xz-KMe" secondAttribute="centerY" id="z5M-Cf-QiX"/>
+                            <constraint firstItem="auN-uj-1DX" firstAttribute="leading" secondItem="eaN-Xz-KMe" secondAttribute="leading" constant="20" id="3hc-5a-0nU"/>
+                            <constraint firstItem="rRw-g5-2J1" firstAttribute="centerY" secondItem="eaN-Xz-KMe" secondAttribute="centerY" id="FEK-gD-dUR"/>
+                            <constraint firstItem="auN-uj-1DX" firstAttribute="top" secondItem="eaN-Xz-KMe" secondAttribute="top" constant="100" id="VuI-PS-VYf"/>
+                            <constraint firstItem="rRw-g5-2J1" firstAttribute="centerX" secondItem="eaN-Xz-KMe" secondAttribute="centerX" id="cCy-Br-OMO"/>
+                            <constraint firstItem="eaN-Xz-KMe" firstAttribute="trailing" secondItem="auN-uj-1DX" secondAttribute="trailing" constant="20" id="heH-Iw-8IU"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="playButton" destination="rRw-g5-2J1" id="5de-gW-3wo"/>
+                        <outlet property="titleLabel" destination="auN-uj-1DX" id="VoP-Y5-MQn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E48-1u-ZFK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -72,6 +86,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="play_btn" width="170.5" height="170.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

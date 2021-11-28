@@ -13,6 +13,14 @@ protocol MainMenuViewControllerInput: AnyObject {
 
 class MainMenuViewController: UIViewController, AlertDisplayer {
 
+    private struct Constants {
+        
+        public static let backgroundImage = UIImage(named: "background_image")
+        public static let titleText = String(localized: "ConnectFourTitle")
+        public static let buttonImage = UIImage(named: "play_btn")
+    }
+    
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
     
     var interactor: MainMenuInteractor?
@@ -20,6 +28,10 @@ class MainMenuViewController: UIViewController, AlertDisplayer {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let bgImg = Constants.backgroundImage { view.backgroundColor = UIColor(patternImage: bgImg) }
+        titleLabel.text = Constants.titleText
+        playButton.setImage(Constants.buttonImage, for: .normal)
     }
     
     //MARK: Actions

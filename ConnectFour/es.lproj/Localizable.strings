@@ -13,3 +13,4 @@
 "ItsDraw" = "Empate!!";
 "PlayerWins" = "%@ ha ganado!!";
 "PlayerTurn" = "Turno de %@!";
+"ConnectFourTitle" = "Conecta Cuatro!";

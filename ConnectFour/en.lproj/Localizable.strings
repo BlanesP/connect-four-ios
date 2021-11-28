@@ -13,3 +13,4 @@
 "ItsDraw" = "It's a draw!!";
 "PlayerWins" = "%@ wins!!";
 "PlayerTurn" = "It is %@'s turn!";
+"ConnectFourTitle" = "Connect Four!";
