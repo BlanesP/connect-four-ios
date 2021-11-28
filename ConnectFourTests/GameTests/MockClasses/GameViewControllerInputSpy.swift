@@ -1,5 +1,5 @@
 //
-//  GameViewControllerOutputSpy.swift
+//  GameViewControllerInputSpy.swift
 //  ConnectFourTests
 //
 //  Created by Pau Blanes on 27/11/21.
@@ -8,7 +8,7 @@
 import Foundation
 @testable import ConnectFour
 
-class GameViewControllerOutputSpy: GameViewControllerInput, AlertDisplayer {
+class GameViewControllerInputSpy: GameViewControllerInput, AlertDisplayer {
     
     var didSetupBoard = false
     var boardSize: BoardSize?

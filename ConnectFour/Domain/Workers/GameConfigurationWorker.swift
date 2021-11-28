@@ -13,9 +13,9 @@ protocol GameConfigurationWorker {
 
 final class DefaultGameConfigurationWorker {
     
-    let apiRepisotory: DefaultApiRepository
+    let apiRepisotory: GameConfigurationRepository
     
-    init(apiRepository: DefaultApiRepository) {
+    init(apiRepository: GameConfigurationRepository) {
         self.apiRepisotory = apiRepository
     }
 }

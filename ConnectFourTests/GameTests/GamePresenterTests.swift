@@ -78,10 +78,10 @@ class GamePresenterTests: XCTestCase {
     }
     
     //MARK: Utils
-    func createGamePresenter() -> (GamePresenter, GameViewControllerOutputSpy) {
+    func createGamePresenter() -> (GamePresenter, GameViewControllerInputSpy) {
         
         let presenter = DefaultGamePresenter()
-        let presenterSpy = GameViewControllerOutputSpy()
+        let presenterSpy = GameViewControllerInputSpy()
         presenter.viewController = presenterSpy
         
         return (presenter, presenterSpy)

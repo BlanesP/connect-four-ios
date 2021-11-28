@@ -1,5 +1,5 @@
 //
-//  GmeLogicTests.swift
+//  GameInteractorTests.swift
 //  ConnectFourTests
 //
 //  Created by Pau Blanes on 27/11/21.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import ConnectFour
 
-class GameLogicTests: XCTestCase {
+class GameInteractorTests: XCTestCase {
 
     //MARK: - Boards
     var emptyBoard:String {
