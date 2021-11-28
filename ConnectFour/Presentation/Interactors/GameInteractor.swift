@@ -70,11 +70,11 @@ final class DefaultGameInteractor: GameLogic {
         
         //Diagonal Win
         if matchesFor(player.id,startingBoardPosition: slot,direction: (x: .positive, y: .positive)) +
-            matchesFor(player.id, startingBoardPosition: slot, direction: (x: .positive, y: .negative)) >= matchesToWin {
+            matchesFor(player.id, startingBoardPosition: slot, direction: (x: .negative, y: .negative)) >= matchesToWin {
             return true
         }
         if matchesFor(player.id,startingBoardPosition: slot,direction: (x: .negative, y: .positive)) +
-            matchesFor(player.id, startingBoardPosition: slot, direction: (x: .negative, y: .negative)) >= matchesToWin {
+            matchesFor(player.id, startingBoardPosition: slot, direction: (x: .positive, y: .negative)) >= matchesToWin {
             return true
         }
         

@@ -37,6 +37,7 @@ class ResultView: UIView {
         layer.borderWidth = 5
         layer.borderColor = UIColor(hexString: "#523A28").cgColor
         backgroundImage.image = UIImage(named: "result_backroung_image")
+        backgroundImage.alpha = 0.5
     }
     
     func setComponent(with viewModel: ResultViewModel, action: ResultViewAction?) {
