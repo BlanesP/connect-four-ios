@@ -24,10 +24,10 @@ final class DefaultApiRepository {
         feedbackDisplayer?.showLoader()
         
         AF.request(url, method: HTTPMethod(rawValue: methodType.rawValue))
-            .responseDecodable(of: OutParams.self) { response in
+            .responseDecodable(of: OutParams.self) { [weak self] response in
                 
-                self.feedbackDisplayer?.hideLoader()
-                self.manageResponse(response: response, completion: completion)
+                self?.feedbackDisplayer?.hideLoader()
+                self?.manageResponse(response: response, completion: completion)
         }
     }
     
