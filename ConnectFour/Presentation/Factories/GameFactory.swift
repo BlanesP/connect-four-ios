@@ -21,9 +21,13 @@ final class GameFactory {
         let presenter = DefaultGamePresenter()
         let interactor = DefaultGameInteractor(gameState: gameState, presenter: presenter)
         
+        let router = DefaultGameRouter()
+        
         let viewController = GameViewController.getStoryboardInstance()
         viewController.interactor = interactor
+        viewController.router = router
     
+        router.viewController = viewController
         presenter.viewController = viewController
         
         return viewController

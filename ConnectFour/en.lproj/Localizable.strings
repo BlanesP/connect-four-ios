@@ -14,3 +14,4 @@
 "PlayerWins" = "%@ wins!!";
 "PlayerTurn" = "It is %@'s turn!";
 "ConnectFourTitle" = "Connect Four!";
+"GoToMenu" = "Go to menu";

@@ -17,29 +17,18 @@ final class DefaultApiRepository {
     
     weak var feedbackDisplayer: RepositoryFeedbackDisplayer?
     
-    func makeRequest<InParams: Encodable, OutParams: Decodable>(url: String,
-                                                                methodType: MethodType,
-                                                                params: InParams? = nil,
-                                                                completion: @escaping (OutParams?, CustomError?) -> Void) {
-     
-        feedbackDisplayer?.showLoader()
-        AF.request(url, method: HTTPMethod(rawValue: methodType.rawValue), parameters: params)
-            .responseDecodable(of: OutParams.self) { response in
-                self.feedbackDisplayer?.hideLoader()
-                self.manageResponse(response: response, completion: completion)
-            }
-    }
-    
     func makeRequest<OutParams: Decodable>(url: String,
                                            methodType: MethodType,
                                            completion: @escaping (OutParams?, CustomError?) -> Void) {
      
         feedbackDisplayer?.showLoader()
+        
         AF.request(url, method: HTTPMethod(rawValue: methodType.rawValue))
             .responseDecodable(of: OutParams.self) { response in
+                
                 self.feedbackDisplayer?.hideLoader()
                 self.manageResponse(response: response, completion: completion)
-                }
+        }
     }
     
     private func manageResponse<OutParams: Decodable>(response: DataResponse<OutParams, AFError>,

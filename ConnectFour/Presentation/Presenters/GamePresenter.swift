@@ -43,10 +43,12 @@ extension DefaultGamePresenter: GamePresenter {
     }
     
     func gameEndedInDraw() {
-        viewController?.showAlert(title: String(localized: "GameOver"), message: String(localized: "ItsDraw"), btnText: String(localized: "OK"), btnAction: nil)
+        
+        viewController?.showResultView(with: ResultViewModel(titleText: String(localized: "ItsDraw").uppercased(), buttonText: String(localized: "GoToMenu").uppercased()))
     }
     
     func gameWon(by player: Player) {
-        viewController?.showAlert(title: String(localized: "GameOver"), message: String(format: String(localized: "PlayerWins"), player.name) , btnText: String(localized: "OK"), btnAction: nil)
+        
+        viewController?.showResultView(with: ResultViewModel(titleText: String(format: String(localized: "PlayerWins"), player.name).uppercased(), buttonText: String(localized: "GoToMenu").uppercased()))
     }
 }

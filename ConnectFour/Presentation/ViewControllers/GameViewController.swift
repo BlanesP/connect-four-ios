@@ -11,6 +11,7 @@ protocol GameViewControllerInput: AnyObject {
     func setUpBoardView(boardSize: BoardSize)
     func draw(chip: ChipViewModel, at slot: BoardPosition)
     func setTitle(with titleText: String)
+    func showResultView(with viewModel: ResultViewModel)
 }
 
 class GameViewController: UIViewController, AlertDisplayer {
@@ -22,6 +23,7 @@ class GameViewController: UIViewController, AlertDisplayer {
     @IBOutlet weak var boardView: BoardView!
     
     var interactor: GameInteractor?
+    var router: GameRouter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,15 @@ extension GameViewController: GameViewControllerInput {
     
     func setTitle(with titleText: String) {
         self.title = titleText
+    }
+    
+    func showResultView(with viewModel: ResultViewModel) {
+        
+        let resultView = ResultView(frame: CGRect(x: 0, y: 0, width: 500, height: 300))
+        resultView.center = view.center
+        resultView.setComponent(with: viewModel, action: router?.goToMenu)
+        
+        view.addSubview(resultView)
     }
 }
 

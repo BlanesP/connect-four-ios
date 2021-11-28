@@ -14,3 +14,4 @@
 "PlayerWins" = "%@ ha ganado!!";
 "PlayerTurn" = "Turno de %@!";
 "ConnectFourTitle" = "Conecta Cuatro!";
+"GoToMenu" = "Ir al menú";

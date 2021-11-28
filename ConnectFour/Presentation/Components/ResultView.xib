@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResultView" customModule="ConnectFour" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundImage" destination="dYv-V6-tWE" id="DXI-gl-qN9"/>
+                <outlet property="button" destination="aUW-N3-LsP" id="F5Y-MS-zp7"/>
+                <outlet property="titleLabel" destination="aEV-Qr-fMD" id="JCn-YJ-Lge"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dYv-V6-tWE">
+                    <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEV-Qr-fMD">
+                    <rect key="frame" x="20" y="231" width="460" height="38.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUW-N3-LsP">
+                    <rect key="frame" x="188" y="408.5" width="124.5" height="51.5"/>
+                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" red="0.3096725602" green="0.78039215689999997" blue="0.35989894929999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule" titleAlignment="center">
+                        <attributedString key="attributedTitle">
+                            <fragment content="Button">
+                                <attributes>
+                                    <font key="NSFont" size="24" name="Futura-Bold"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <directionalEdgeInsets key="contentInsets" top="10" leading="20" bottom="10" trailing="20"/>
+                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="pbk-LM-uFB"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="aUW-N3-LsP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="7XT-Gh-fpC"/>
+                <constraint firstItem="dYv-V6-tWE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9rQ-ez-iIR"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aUW-N3-LsP" secondAttribute="trailing" constant="20" id="BvS-Nh-m6W"/>
+                <constraint firstItem="dYv-V6-tWE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CUX-Ui-hvW"/>
+                <constraint firstItem="aEV-Qr-fMD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Ebi-kb-dJo"/>
+                <constraint firstItem="aEV-Qr-fMD" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="QQj-pA-TEa"/>
+                <constraint firstAttribute="bottom" secondItem="aUW-N3-LsP" secondAttribute="bottom" constant="40" id="Vq6-Ua-bRV"/>
+                <constraint firstAttribute="trailing" secondItem="dYv-V6-tWE" secondAttribute="trailing" id="Z5Y-6e-H1s"/>
+                <constraint firstAttribute="trailing" secondItem="aEV-Qr-fMD" secondAttribute="trailing" constant="20" id="atR-O3-R8q"/>
+                <constraint firstAttribute="bottom" secondItem="dYv-V6-tWE" secondAttribute="bottom" id="tLN-uI-cig"/>
+                <constraint firstItem="aUW-N3-LsP" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wUx-0t-Xny"/>
+                <constraint firstItem="aUW-N3-LsP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="aEV-Qr-fMD" secondAttribute="bottom" constant="20" id="xjd-2d-Mbd"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="133" y="62"/>
+        </view>
+    </objects>
+</document>

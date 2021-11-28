@@ -29,7 +29,6 @@ class GamePresenterTests: XCTestCase {
         
         presenter.startGame(with: boardSize, startingPlayer: player)
         
-        XCTAssertTrue(viewControllerInputSpy.didSetupBoard)
         XCTAssertEqual(viewControllerInputSpy.boardSize?.numRows, boardSize.numRows)
         XCTAssertEqual(viewControllerInputSpy.boardSize?.numColumns, boardSize.numColumns)
         XCTAssertTrue(viewControllerInputSpy.titleMessage?.contains(player.name) ?? false)
@@ -41,7 +40,6 @@ class GamePresenterTests: XCTestCase {
         
         presenter.player(player, placedChipAt: inputSlot)
         
-        XCTAssertTrue(viewControllerInputSpy.didDrawChip)
         XCTAssertEqual(viewControllerInputSpy.chipViewModel?.color, UIColor(hexString: player.colorHex))
     }
     
@@ -56,22 +54,22 @@ class GamePresenterTests: XCTestCase {
         
         presenter.columnIsFull()
         
-        XCTAssertTrue(viewControllerInputSpy.didShowAlert)
+        XCTAssertNotNil(viewControllerInputSpy.alertMessage)
     }
     
     func testGameDraw() {
         
         presenter.gameEndedInDraw()
         
-        XCTAssertTrue(viewControllerInputSpy.didShowAlert)
+        XCTAssertNotNil(viewControllerInputSpy.resultViewModel)
     }
     
     func testGameWin() {
         
         presenter.gameWon(by: player)
         
-        XCTAssertTrue(viewControllerInputSpy.didShowAlert)
-        XCTAssertTrue(viewControllerInputSpy.alertMessage?.contains(player.name) ?? false)
+        XCTAssertNotNil(viewControllerInputSpy.resultViewModel)
+        XCTAssertTrue(viewControllerInputSpy.resultViewModel?.titleText.lowercased().contains(player.name.lowercased()) ?? false)
     }
 }
 

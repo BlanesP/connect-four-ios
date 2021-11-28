@@ -10,23 +10,17 @@ import Foundation
 
 class GameViewControllerInputSpy: GameViewControllerInput, AlertDisplayer {
     
-    var didSetupBoard = false
     var boardSize: BoardSize?
     var titleMessage: String?
-    
-    var didDrawChip = false
     var chipViewModel: ChipViewModel?
-    
-    var didShowAlert = false
     var alertMessage: String?
+    var resultViewModel: ResultViewModel?
     
     func setUpBoardView(boardSize: BoardSize) {
-        didSetupBoard = true
         self.boardSize = boardSize
     }
     
     func draw(chip: ChipViewModel, at slot: BoardPosition) {
-        didDrawChip = true
         chipViewModel = chip
     }
     
@@ -35,7 +29,10 @@ class GameViewControllerInputSpy: GameViewControllerInput, AlertDisplayer {
     }
     
     func showAlert(title: String?, message: String?, btnText: String?, btnAction: ButtonAction?) {
-        didShowAlert = true
         alertMessage = message
+    }
+    
+    func showResultView(with viewModel: ResultViewModel) {
+        resultViewModel = viewModel
     }
 }
