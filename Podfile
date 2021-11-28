@@ -7,5 +7,6 @@ target 'ConnectFour' do
 
   # Pods for ConnectFour
   pod 'Alamofire'
+  pod 'lottie-ios'
 
 end

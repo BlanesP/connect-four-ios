@@ -12,7 +12,8 @@ final class MainMenuFactory {
     static func createMainMenuModule() -> MainMenuViewController {
         
         let presenter = DefaultMainMenuPresenter()
-        let worker = DefaultGameConfigurationWorker(apiRepository: DefaultApiRepository())
+        let apiRepository = DefaultApiRepository()
+        let worker = DefaultGameConfigurationWorker(apiRepository: apiRepository)
         let interactor = DefaultMainMenuInteractor(presenter: presenter, worker: worker)
         let router = DefaultMainMenuRouter(dataSource: interactor)
         
@@ -20,6 +21,7 @@ final class MainMenuFactory {
         
         presenter.viewController = viewController
         router.viewController = viewController
+        apiRepository.feedbackDisplayer = viewController
         viewController.interactor = interactor
         viewController.router = router
         

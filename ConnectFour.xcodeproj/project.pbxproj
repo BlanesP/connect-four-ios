@@ -54,6 +54,9 @@
 		1ECD5877274D363900E31006 /* GameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5875274D363900E31006 /* GameInteractor.swift */; };
 		1ECD587A274D36F300E31006 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD5879274D36F300E31006 /* GameState.swift */; };
 		1EDF2828275394C8001B205B /* MainMenuViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF2827275394C8001B205B /* MainMenuViewControllerTests.swift */; };
+		1EDF282A2753ABC7001B205B /* RepositoryFeedbackDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF28292753ABC7001B205B /* RepositoryFeedbackDisplayer.swift */; };
+		1EDF282C2753AC46001B205B /* SpinnerViewDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF282B2753AC46001B205B /* SpinnerViewDisplayer.swift */; };
+		1EDF28352753B5FB001B205B /* spinner.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EDF28342753B5FB001B205B /* spinner.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +121,9 @@
 		1ECD5875274D363900E31006 /* GameInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInteractor.swift; sourceTree = "<group>"; };
 		1ECD5879274D36F300E31006 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		1EDF2827275394C8001B205B /* MainMenuViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewControllerTests.swift; sourceTree = "<group>"; };
+		1EDF28292753ABC7001B205B /* RepositoryFeedbackDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryFeedbackDisplayer.swift; sourceTree = "<group>"; };
+		1EDF282B2753AC46001B205B /* SpinnerViewDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewDisplayer.swift; sourceTree = "<group>"; };
+		1EDF28342753B5FB001B205B /* spinner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spinner.json; sourceTree = "<group>"; };
 		38DB04B900754D07089D605A /* Pods-ConnectFour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectFour.release.xcconfig"; path = "Target Support Files/Pods-ConnectFour/Pods-ConnectFour.release.xcconfig"; sourceTree = "<group>"; };
 		63EFFAE83D0C471FDF314D5E /* Pods_ConnectFour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectFour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C949D2559BA95FB871E9E0DD /* Pods-ConnectFour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectFour.debug.xcconfig"; path = "Target Support Files/Pods-ConnectFour/Pods-ConnectFour.debug.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +229,7 @@
 		1E3779BA2750DC130075FF0E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1EDF282B2753AC46001B205B /* SpinnerViewDisplayer.swift */,
 				1E3779BB2750DC250075FF0E /* UIColor+Extensions.swift */,
 				1E3779C627511A700075FF0E /* StoryboardInstantiator.swift */,
 				1E52F3672751659E00096F57 /* AlertDisplayer.swift.swift */,
@@ -281,6 +288,7 @@
 			children = (
 				1E199CF52751573C0099DF68 /* DefaultApiRepository.swift */,
 				1E199CF62751573C0099DF68 /* CustomError.swift */,
+				1EDF28292753ABC7001B205B /* RepositoryFeedbackDisplayer.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -375,6 +383,7 @@
 		1ECD585F274D362300E31006 /* ConnectFour */ = {
 			isa = PBXGroup;
 			children = (
+				1EDF282D2753B32B001B205B /* LottieAnimations */,
 				1E3779C3275117630075FF0E /* Data */,
 				1E3779C2275117450075FF0E /* Domain */,
 				1E3779BA2750DC130075FF0E /* Utils */,
@@ -388,6 +397,14 @@
 				1E270A9E2751756E00B405E7 /* Localizable.strings */,
 			);
 			path = ConnectFour;
+			sourceTree = "<group>";
+		};
+		1EDF282D2753B32B001B205B /* LottieAnimations */ = {
+			isa = PBXGroup;
+			children = (
+				1EDF28342753B5FB001B205B /* spinner.json */,
+			);
+			path = LottieAnimations;
 			sourceTree = "<group>";
 		};
 		C396428B484C91D39AA25E26 /* Frameworks */ = {
@@ -503,6 +520,7 @@
 				1E270A9C2751756E00B405E7 /* Localizable.strings in Resources */,
 				1ECD586D274D362500E31006 /* LaunchScreen.storyboard in Resources */,
 				1E9C0C34274D4E4E00DE5366 /* BoardView.xib in Resources */,
+				1EDF28352753B5FB001B205B /* spinner.json in Resources */,
 				1ECD586A274D362500E31006 /* Assets.xcassets in Resources */,
 				1ECD5868274D362300E31006 /* Main.storyboard in Resources */,
 			);
@@ -593,6 +611,7 @@
 				1E9C0C32274D4D8600DE5366 /* BoardView.swift in Sources */,
 				1E52F3682751659E00096F57 /* AlertDisplayer.swift.swift in Sources */,
 				1E2D8100275011D3002755C3 /* GamePresenter.swift in Sources */,
+				1EDF282A2753ABC7001B205B /* RepositoryFeedbackDisplayer.swift in Sources */,
 				1E60373D274D3E1C000DD2A8 /* GameFactory.swift in Sources */,
 				1E3779CB27511D410075FF0E /* MainMenuPresenter.swift in Sources */,
 				1EC7434527515B710076EF92 /* GameConfigurationEntity.swift in Sources */,
@@ -602,6 +621,7 @@
 				1E2D81032750173E002755C3 /* Board.swift in Sources */,
 				1E199CF72751573C0099DF68 /* DefaultApiRepository.swift in Sources */,
 				1ECD5863274D362300E31006 /* SceneDelegate.swift in Sources */,
+				1EDF282C2753AC46001B205B /* SpinnerViewDisplayer.swift in Sources */,
 				1E2D8107275028EB002755C3 /* Grid.swift in Sources */,
 				1E3779D027511F050075FF0E /* MainMenuRouter.swift in Sources */,
 			);

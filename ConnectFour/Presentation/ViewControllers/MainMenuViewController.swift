@@ -11,7 +11,7 @@ protocol MainMenuViewControllerInput: AnyObject {
     func goToGame()
 }
 
-class MainMenuViewController: UIViewController, AlertDisplayer {
+class MainMenuViewController: UIViewController, AlertDisplayer, SpinnerViewDisplayer {
 
     private struct Constants {
         
@@ -23,6 +23,7 @@ class MainMenuViewController: UIViewController, AlertDisplayer {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
     
+    var spinnerView: UIView?
     var interactor: MainMenuInteractor?
     var router: MainMenuRouter?
     

@@ -10,7 +10,7 @@ import XCTest
 
 class MainMenuInteractorTests: XCTestCase {
 
-    var interactor: MainMenuInteractor!
+    var interactor: (MainMenuInteractor & GameDataSource)!
     var presenterSpy: MainMenuPresenterSpy!
     var workerSpy: GameConfigurationWorkerSpy!
     
@@ -30,6 +30,7 @@ class MainMenuInteractorTests: XCTestCase {
         XCTAssertTrue(workerSpy.didCallFetchConfig)
         XCTAssertTrue(presenterSpy.didCallSuccededToDownloadConfig)
         XCTAssertFalse(presenterSpy.didCallFailedToDownloadConfig)
+        XCTAssertNotNil(interactor.gameConfiguration)
     }
     
     func testPlayWithError() {
