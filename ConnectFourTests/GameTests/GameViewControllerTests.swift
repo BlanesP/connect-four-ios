@@ -10,11 +10,17 @@ import XCTest
 
 class GameViewControllerTests: XCTestCase {
 
-    func testLoadGameWhenViewIsLoaded() {
+    var viewController: GameViewController!
+    var interactorSpy: GameInteractorSpy!
+    
+    override func setUpWithError() throws {
         
-        let viewController = GameViewController.getStoryboardInstance()
-        let interactorSpy = GameInteractorSpy()
+        viewController = GameViewController.getStoryboardInstance()
+        interactorSpy = GameInteractorSpy()
         viewController.interactor = interactorSpy
+    }
+    
+    func testLoadGameWhenViewIsLoaded() {
         
         _ = viewController.view
         

@@ -12,7 +12,6 @@ class GameViewControllerInputSpy: GameViewControllerInput, AlertDisplayer {
     
     var didSetupBoard = false
     var boardSize: BoardSize?
-    var didSetTitle = false
     var titleMessage: String?
     
     var didDrawChip = false
@@ -32,7 +31,6 @@ class GameViewControllerInputSpy: GameViewControllerInput, AlertDisplayer {
     }
     
     func setTitle(with titleText: String) {
-        didSetTitle = true
         titleMessage = titleText
     }
     

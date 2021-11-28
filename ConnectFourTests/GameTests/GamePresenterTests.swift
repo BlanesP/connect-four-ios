@@ -10,89 +10,68 @@ import XCTest
 
 class GamePresenterTests: XCTestCase {
     
+    var boardSize: BoardSize!
+    var player: Player!
+    var presenter: GamePresenter!
+    var viewControllerInputSpy: GameViewControllerInputSpy!
+    
+    override func setUpWithError() throws {
+        
+        boardSize = BoardSize(numRows: 6, numColumns: 7)
+        player = Player(name: "TestName", id: .player1, colorHex: "#ff0000")
+        let defaultPresenter = DefaultGamePresenter()
+        viewControllerInputSpy = GameViewControllerInputSpy()
+        defaultPresenter.viewController = viewControllerInputSpy
+        presenter = defaultPresenter
+    }
+    
     func testSetupBoard() {
         
-        let (presenter, presenterSpy) = createGamePresenter()
-        let inputBoardSize = createBoardSize()
-        let inputPlayer = createPlayer()
+        presenter.startGame(with: boardSize, startingPlayer: player)
         
-        presenter.startGame(with: inputBoardSize, startingPlayer: inputPlayer)
-        
-        XCTAssertTrue(presenterSpy.didSetupBoard)
-        XCTAssertTrue(presenterSpy.didSetTitle)
-        XCTAssertEqual(presenterSpy.boardSize?.numRows, inputBoardSize.numRows)
-        XCTAssertEqual(presenterSpy.boardSize?.numColumns, inputBoardSize.numColumns)
-        XCTAssertTrue(presenterSpy.titleMessage?.contains(inputPlayer.name) ?? false)
+        XCTAssertTrue(viewControllerInputSpy.didSetupBoard)
+        XCTAssertEqual(viewControllerInputSpy.boardSize?.numRows, boardSize.numRows)
+        XCTAssertEqual(viewControllerInputSpy.boardSize?.numColumns, boardSize.numColumns)
+        XCTAssertTrue(viewControllerInputSpy.titleMessage?.contains(player.name) ?? false)
     }
     
     func testPlayerMove() {
         
-        let (presenter, presenterSpy) = createGamePresenter()
-        let inputPlayer = createPlayer()
         let inputSlot = BoardPosition(row: 2, column: 3)
         
-        presenter.player(inputPlayer, placedChipAt: inputSlot)
+        presenter.player(player, placedChipAt: inputSlot)
         
-        XCTAssertTrue(presenterSpy.didDrawChip)
-        XCTAssertEqual(presenterSpy.chipViewModel?.color, UIColor(hexString: inputPlayer.colorHex))
+        XCTAssertTrue(viewControllerInputSpy.didDrawChip)
+        XCTAssertEqual(viewControllerInputSpy.chipViewModel?.color, UIColor(hexString: player.colorHex))
     }
     
     func testChangePlayer() {
         
-        let (presenter, presenterSpy) = createGamePresenter()
-        let inputPlayer = createPlayer()
+        presenter.turnChanged(newPlayer: player)
         
-        presenter.turnChanged(newPlayer: inputPlayer)
-        
-        XCTAssertTrue(presenterSpy.didSetTitle)
-        XCTAssertTrue(presenterSpy.titleMessage?.contains(inputPlayer.name) ?? false)
+        XCTAssertTrue(viewControllerInputSpy.titleMessage?.contains(player.name) ?? false)
     }
     
     func testColumnFull() {
         
-        let (presenter, presenterSpy) = createGamePresenter()
-        
         presenter.columnIsFull()
         
-        XCTAssertTrue(presenterSpy.didShowAlert)
+        XCTAssertTrue(viewControllerInputSpy.didShowAlert)
     }
     
     func testGameDraw() {
         
-        let (presenter, presenterSpy) = createGamePresenter()
-        
         presenter.gameEndedInDraw()
         
-        XCTAssertTrue(presenterSpy.didShowAlert)
+        XCTAssertTrue(viewControllerInputSpy.didShowAlert)
     }
     
     func testGameWin() {
         
-        let (presenter, presenterSpy) = createGamePresenter()
-        let inputPlayer = createPlayer()
+        presenter.gameWon(by: player)
         
-        presenter.gameWon(by: inputPlayer)
-        
-        XCTAssertTrue(presenterSpy.didShowAlert)
-        XCTAssertTrue(presenterSpy.alertMessage?.contains(inputPlayer.name) ?? false)
-    }
-    
-    //MARK: Utils
-    func createGamePresenter() -> (GamePresenter, GameViewControllerInputSpy) {
-        
-        let presenter = DefaultGamePresenter()
-        let presenterSpy = GameViewControllerInputSpy()
-        presenter.viewController = presenterSpy
-        
-        return (presenter, presenterSpy)
-    }
-    
-    func createBoardSize() -> BoardSize {
-        return BoardSize(numRows: 6, numColumns: 7)
-    }
-    
-    func createPlayer() -> Player {
-        return Player(name: "TestName", id: .player1, colorHex: "#ff0000")
+        XCTAssertTrue(viewControllerInputSpy.didShowAlert)
+        XCTAssertTrue(viewControllerInputSpy.alertMessage?.contains(player.name) ?? false)
     }
 }
 
